@@ -1,6 +1,6 @@
 {
   "name": "request-debugger",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A plugin/middleware to help debugging requests",
   "homepage": "https://github.com/giodamelio/request-debugger",
   "author": "Gio d'Amelio",
