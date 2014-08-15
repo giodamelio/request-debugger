@@ -1,0 +1,25 @@
+{
+  "name": "request-debugger",
+  "version": "0.1.0",
+  "description": "A plugin/middleware to help debugging requests",
+  "homepage": "https://github.com/giodamelio/request-debugger",
+  "author": "Gio d'Amelio",
+  "license": "MIT",
+  "main": "src/index.js",
+  "dependencies": {
+    "debug": "^1.0.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/giodamelio/request-debugger.git"
+  },
+  "keywords": [
+    "express",
+    "hapi",
+    "request",
+    "debug"
+  ],
+  "bugs": {
+    "url": "https://github.com/giodamelio/request-debugger/issues"
+  }
+}
