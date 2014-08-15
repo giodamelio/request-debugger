@@ -7,7 +7,11 @@
   "license": "MIT",
   "main": "src/index.js",
   "dependencies": {
-    "debug": "^1.0.4"
+    "ecstatic": "^0.5.4"
+  },
+  "devDependencies": {
+    "express": "^4.8.4",
+    "hapi": "^6.5.1"
   },
   "repository": {
     "type": "git",

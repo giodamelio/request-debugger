@@ -4,8 +4,8 @@ var util = require("util");
 // Create our request debugger
 var requestDebugger = function(options) {
     this.on("request", function(request, response) {
-        console.log("Request:", request);
-        console.log("Response:", response);
+        // console.log("Request:", request);
+        // console.log("Response:", response);
     });
 };
 
