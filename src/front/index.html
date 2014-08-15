@@ -2,9 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>request-debugger</title>
+    <title>Request Debugger</title>
+
+    <!-- CSS -->
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css">
+    <!-- Colors -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/colors/1.0/colors.min.css">
 </head>
-<body>
-    <h1>Hello World</h1>
+<body ng-app="request-debugger">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1 text-center">
+                <h1>Request Debugger</h1>
+            </div>
+        </div>
+        <div ng-controller="requests" class="row">
+            <h2>{{test}}</h2>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <!-- Angular -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.0-beta.13/angular.min.js"></script>
+    <!-- Angular-UI Bootstrap -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap.min.js"></script>
+    <!-- My JS -->
+    <script type="text/javascript">
+        var app = angular.module("request-debugger", []);
+
+        app.controller("requests", ["$scope", function($scope) {
+            $scope.test = "Hello World!";
+        }]);
+    </script>
 </body>
 </html>
