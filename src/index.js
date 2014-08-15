@@ -6,9 +6,11 @@ var RequestDebugger = require("./request-debugger");
 
 // Express middleware
 module.exports = function(options) {
+    // Default options
     if (!options) {
         options = {};
     }
+    options.path = options.path + "/" || "/request-debugger/";
 
     // Create our request-debugger
     var requestDebugger = new RequestDebugger(options);
@@ -20,8 +22,7 @@ module.exports = function(options) {
         });
 
         // Serve the front end
-        if ((options.path + "/" || "/request-debugger/").indexOf(req.url) != -1) {
-            console.log("HERE");
+        if ((options.path).indexOf(req.url) != -1) {
             ecstatic({
                 root: path.resolve(__dirname, "./front"),
                 baseDir: options.path || "/request-debugger/"
@@ -34,13 +35,16 @@ module.exports = function(options) {
 
 // Hapi Plugin
 module.exports.register = function(plugin, options, next) {
+    // Default options
+    options.path = options.path || "/request-debugger";
+
     // Create our request-debugger
     var requestDebugger = new RequestDebugger(options);
 
     // Serve the front end
     plugin.route({
         method: "GET",
-        path: path.join(options.path || "/request-debugger", "{params*}"),
+        path: path.join(options.path, "{params*}"),
         handler: {
             directory: {
                 path: path.resolve(__dirname, "./front")
@@ -51,7 +55,7 @@ module.exports.register = function(plugin, options, next) {
     // Foreward requests to the request debugger
     plugin.events.on("tail", function(request) {
         requestDebugger.emit("request", request, request.response);
-    });
+    });  
     next();
 };
 
