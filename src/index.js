@@ -2,8 +2,6 @@ var path = require("path");
 
 var ecstatic = require("ecstatic");
 
-var RequestDebugger = require("./request-debugger");
-
 // Express middleware
 module.exports = function(options) {
     // Default options
@@ -12,13 +10,10 @@ module.exports = function(options) {
     }
     options.path = options.path + "/" || "/request-debugger/";
 
-    // Create our request-debugger
-    var requestDebugger = new RequestDebugger(options);
-
     return function(req, res, next) {
         // Foreward requests to the request debugger
         res.on("close", function() {
-            requestDebugger.emit("request", req, res);
+            console.log(req, res);
         });
 
         // Serve the front end
@@ -38,9 +33,6 @@ module.exports.register = function(plugin, options, next) {
     // Default options
     options.path = options.path || "/request-debugger";
 
-    // Create our request-debugger
-    var requestDebugger = new RequestDebugger(options);
-
     // Serve the front end
     plugin.route({
         method: "GET",
@@ -54,7 +46,7 @@ module.exports.register = function(plugin, options, next) {
 
     // Foreward requests to the request debugger
     plugin.events.on("tail", function(request) {
-        requestDebugger.emit("request", request, request.response);
+        console.log(request, request.response);
     });  
     next();
 };
