@@ -17,12 +17,6 @@
                 <h1>Request Debugger</h1>
             </div>
         </div>
-        <div ng-controller="detectSSE" class="row">
-            <div ng-show="!supportsSSE" class="col-md-10 col-md-offset-1">
-                <alert class="alert alert-danger">
-                    Your browser doesnt support <a href="http://dev.w3.org/html5/eventsource/">Server-Sent Events</a>. Please <a href="http://caniuse.com/eventsource">use one the does.</a>
-                </alert>
-            </div>
         </div>
         <div ng-controller="requests" class="row">
             <h2>{{test}}</h2>
@@ -39,14 +33,7 @@
     <script type="text/javascript">
         var app = angular.module("request-debugger", ["ui.bootstrap"]);
         
-        // Make sure our browser supports SSE's
-        app.controller("detectSSE", ["$scope", function($scope) {
-            $scope.supportsSSE = true;
-            if (!window.EventSource) {
-                $scope.supportsSSE = false;
-            }
-        }]);
-
+        // The requests list
         app.controller("requests", ["$scope", function($scope) {
             $scope.test = "Hello World!";
         }]);
